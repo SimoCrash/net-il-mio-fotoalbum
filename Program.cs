@@ -1,3 +1,5 @@
+using net_il_mio_fotoalbum.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,5 +25,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Photo}/{action=Index}/{id?}");
+
+using(var ctx = new PhotoContext())
+{
+    ctx.seed();
+}
 
 app.Run();
