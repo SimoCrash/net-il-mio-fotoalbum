@@ -1,6 +1,7 @@
-﻿@{
+﻿@model Photo[]
+@{
     ViewData["Title"] = "Home Page";
-
+    var Photos = Model;
 
 }
 <h1 class="text-center">Le mie foto</h1>
@@ -15,7 +16,17 @@
             <th scope="col">Category</th>
         </tr>
     </thead>
-    @*<tbody>
-        @foreach(var photo in Photos)
-    </tbody>*@
+    <tbody>
+        @foreach (var photo in Photos)
+        {
+            <tr>
+                <td>@photo.Id</td>
+                <td>@photo.ImageUrl</td>
+                <td>@photo.Title</td>
+                <td>@photo.Description</td>
+                <td>@photo.Visible</td>
+                <td>@photo.Categories</td>
+            </tr>
+        }
+    </tbody>
 </table>

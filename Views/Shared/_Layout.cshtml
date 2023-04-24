@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">net_il_mio_fotoalbum</a>
+                <a href="@Url.Action("Index", "Photo")" class="m-3">net_il_mio_fotoalbum</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,10 +20,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a href="@Url.Action("Index", "Photo")">Home</a>
+                            <a href="@Url.Action("Index", "Photo")" class="m-3">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Privacy", "Photo")">Privacy</a>
+                            <a href="@Url.Action("Privacy", "Photo")" class="m-3">Privacy</a>
                         </li>
                     </ul>
                 </div>

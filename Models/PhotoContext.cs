@@ -5,7 +5,7 @@ namespace net_il_mio_fotoalbum.Models
     public class PhotoContext : DbContext
     {
         public DbSet<Photo> Photos { get; set; }
-        //public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,7 +14,7 @@ namespace net_il_mio_fotoalbum.Models
 
         
 
-        public void seed()
+        public void Seed()
         {
 
             var photoSeed = new Photo[]
@@ -48,27 +48,26 @@ namespace net_il_mio_fotoalbum.Models
             };
 
 
-            //var CategoriesSeed = new Category[]
-            //{
-            //    new Category
-            //    {
-            //        Name = "Generica",
-            //        Photos = photoSeed,
-            //    },
-            //    new Category
-            //    {
-            //        Name = "Natura",
-            //    },
-            //    new Category
-            //    {
-            //        Name = "Italia",
-            //    },
-            //};
+            var CategoriesSeed = new Category[]
+            {
+                new Category
+                {
+                    Name = "Generica",
+                },
+                new Category
+                {
+                    Name = "Natura",
+                },
+                new Category
+                {
+                    Name = "Italia",
+                },
+            };
 
-            //if(!Categories.Any())
-            //{ 
-            //    Categories.AddRange(CategoriesSeed);
-            //}
+            if (!Categories.Any())
+            {
+                Categories.AddRange(CategoriesSeed);
+            }
 
 
             SaveChanges();

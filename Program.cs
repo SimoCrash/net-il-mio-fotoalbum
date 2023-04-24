@@ -28,7 +28,7 @@ app.MapControllerRoute(
 
 using(var ctx = new PhotoContext())
 {
-    ctx.seed();
+    ctx.Seed();
 }
 
 app.Run();
