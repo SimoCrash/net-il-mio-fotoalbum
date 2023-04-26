@@ -23,6 +23,9 @@
                 <input asp-for="Photo.ImageUrl" />
                 <span asp-validation-for="Photo.ImageUrl"></span>
             </div>
+            <div class="form-field">
+                <span><label asp-for="Photo.Visible">Visible</label><span class="ps-2"><input type="checkbox" asp-for="Photo.Visible" /></span></span>
+            </div>
             <div>
                 <label asp-for="SelectedCategories">Categorie</label>
                 <select asp-for="SelectedCategories" multiple="multiple" asp-items="@Model.Categories"></select>

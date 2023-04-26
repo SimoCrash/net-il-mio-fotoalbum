@@ -20,6 +20,9 @@
     <tbody>
         @foreach (var photo in Photos)
         {
+            @if (photo.Visible is true)
+            {
+                
             <tr>
                 <td>@photo.Id</td>
                 <td><img src="@photo.ImageUrl" /></td>
@@ -38,6 +41,29 @@
                     <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
                 </td>
             </tr>
+            }
+            else
+            {
+                <tr class="d-none">
+                    <td>@photo.Id</td>
+                    <td><img src="@photo.ImageUrl" /></td>
+                    <td>@photo.Title</td>
+                    <td>@photo.Description</td>
+                    <td>@photo.Visible</td>
+                    <td>
+                        @foreach (var category in photo.Categories!)
+                        {
+                            <text>@category.Name</text>
+                        }
+                    </td>
+                    <td>
+                        <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
+                        <button class="bg-warning"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
+                        <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
+                    </td>
+                </tr>
+            }
+
         }
     </tbody>
 </table>
