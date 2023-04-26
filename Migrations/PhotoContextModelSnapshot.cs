@@ -34,7 +34,7 @@ namespace net_il_mio_fotoalbum.Migrations
 
                     b.HasIndex("PhotosId");
 
-                    b.ToTable("CategoryPhoto");
+                    b.ToTable("CategoryPhoto", (string)null);
                 });
 
             modelBuilder.Entity("net_il_mio_fotoalbum.Models.Category", b =>
@@ -51,7 +51,7 @@ namespace net_il_mio_fotoalbum.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("net_il_mio_fotoalbum.Models.Photo", b =>
@@ -82,7 +82,7 @@ namespace net_il_mio_fotoalbum.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Photos");
+                    b.ToTable("Photos", (string)null);
                 });
 
             modelBuilder.Entity("CategoryPhoto", b =>
