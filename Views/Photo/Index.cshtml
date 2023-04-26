@@ -14,6 +14,7 @@
             <th scope="col">Description</th>
             <th scope="col">Visible</th>
             <th scope="col">Category</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +26,15 @@
                 <td>@photo.Title</td>
                 <td>@photo.Description</td>
                 <td>@photo.Visible</td>
-                <td>@photo.Categories</td>
+                <td>
+                    @foreach (var category in photo.Categories!)
+                    {
+                        <text>@category.Name</text>
+                    }
+                </td>
+                <td>
+                    <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
+                </td>
             </tr>
         }
     </tbody>

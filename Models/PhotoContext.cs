@@ -53,7 +53,7 @@ namespace net_il_mio_fotoalbum.Models
                 new Category
                 {
                     Name = "Generica",
-                    Photos = photoSeed,
+                    Photos = photoSeed.ToList(),
                 },
                 new Category
                 {

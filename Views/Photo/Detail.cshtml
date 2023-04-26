@@ -1,0 +1,21 @@
+﻿@model Photo
+@{
+    var photo = Model;
+}
+
+<h1>Dettaglio della Foto</h1>
+
+<div class="container-detail">
+    <h3>Nome: @photo.Title</h3>
+    <p>Descrizione: @photo.Description</p>
+    <p class="container-detail-img"><img src="@photo.ImageUrl" /></p>
+    <div>
+        <h4>Categoria</h4>
+        <div>
+            @foreach (var category in @photo.Categories!)
+            {
+                <p>@category.Name</p>
+            }
+        </div>
+    </div>
+</div>
