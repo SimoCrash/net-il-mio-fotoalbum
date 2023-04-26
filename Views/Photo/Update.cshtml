@@ -1,12 +1,11 @@
 ﻿@model PhotoFormModel
 
-
 <div class="container-form">
 
-    <h2>Crea una nuova Foto</h2>
+    <h2>Modifica Foto</h2>
 
     <div>
-        <form method="post" asp-asp-controller="Photo" asp-action="Create" enctype="multipart/form-data">
+        <form method="post" asp-asp-controller="Photo" asp-action="Update" asp-route-id="@Model.Photo.Id" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
             <div>
                 <label asp-for="Photo.Title">Nome</label>
@@ -27,7 +26,7 @@
                 <label asp-for="SelectedCategories">Categorie</label>
                 <select asp-for="SelectedCategories" multiple="multiple" asp-items="@Model.Categories"></select>
             </div>
-            <button type="submit">Crea ora!</button>
+            <button type="submit">Modifica Ora!</button>
         </form>
     </div>
 
