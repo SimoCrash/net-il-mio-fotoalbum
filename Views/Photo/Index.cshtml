@@ -34,7 +34,8 @@
                 </td>
                 <td>
                     <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
-                    <button class="bg-secondary"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
+                    <button class="bg-warning"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
+                    <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
                 </td>
             </tr>
         }

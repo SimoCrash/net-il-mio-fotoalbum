@@ -105,6 +105,24 @@ namespace net_il_mio_fotoalbum.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete(int id)
+        {
+            using var ctx = new PhotoContext();
+            var PhotoToDelete = ctx.Photos.FirstOrDefault(p => p.Id == id);
+
+            if (PhotoToDelete is null)
+            {
+                return View($"Non è stato trovato l'id {id}");
+            }
+
+            ctx.Photos.Remove(PhotoToDelete);
+
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
         public IActionResult Privacy()
         {
             return View();
