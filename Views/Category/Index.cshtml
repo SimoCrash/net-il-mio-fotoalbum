@@ -1,0 +1,37 @@
+﻿@model Category[]
+@{
+    ViewData["Title"] = "Category";
+    var Categories = Model;
+
+}
+<h1 class="text-center">Le mie Categorie</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Photo Associate</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Categories)
+        {
+            
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>
+                    @foreach (var categoryPhoto in category.Photos)
+                    {
+                    <text>@categoryPhoto.Title</text>
+                    }
+                </td>
+                <td>
+                <button class="bg-danger"><a href="@Url.Action("Delete", "Category", new{id = category.Id})">Delete</a></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Category")">Crea una nuova Categoria</a>
