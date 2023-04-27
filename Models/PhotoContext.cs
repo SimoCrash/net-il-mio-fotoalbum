@@ -72,6 +72,40 @@ namespace net_il_mio_fotoalbum.Models
                 Categories.AddRange(CategoriesSeed);
             }
 
+            if (!Roles.Any())
+            {
+                var RolesSeed = new IdentityRole[]
+                {
+                    new("ADMIN"),
+                    new("USER"),
+                };
+
+                Roles.AddRange(RolesSeed);
+            }
+
+            if (Users.Any(u => u.Email == "admin@dev.com" || u.Email == "user@dev.com") && !UserRoles.Any())
+            {
+                var admin = Users.First(u => u.Email == "admin@dev.com");
+                var user = Users.First(u => u.Email == "user@dev.com");
+
+                var adminRole = Roles.First(r => r.Name == "ADMIN");
+                var userRole = Roles.First(r => r.Name == "USER");
+
+                var UserRoleSeed = new IdentityUserRole<string>[]
+                {
+                    new()
+                    {
+                        UserId = admin.Id,
+                        RoleId = adminRole.Id,
+                    },
+                    new()
+                    {
+                        UserId = user.Id,
+                        RoleId = userRole.Id,
+                    }
+                };
+                UserRoles.AddRange(UserRoleSeed);
+            }
 
             SaveChanges();
         }

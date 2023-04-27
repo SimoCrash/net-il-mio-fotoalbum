@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Models;
@@ -7,6 +8,7 @@ namespace net_il_mio_fotoalbum.Controllers
 {
     public class PhotoController : Controller
     {
+        [Authorize(Roles = "ADMIN, USER")]
         public IActionResult Index()
         {
             using var ctx = new PhotoContext();
@@ -14,6 +16,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(photos);
         }
 
+        [Authorize(Roles = "ADMIN, USER")]
         public IActionResult Detail(int id)
         {
             using var ctx = new PhotoContext();
@@ -21,6 +24,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(photo);
         }
 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Create()
         {
             using var ctx = new PhotoContext();
@@ -32,6 +36,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(formModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PhotoFormModel form)
@@ -50,7 +55,8 @@ namespace net_il_mio_fotoalbum.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Update(int id)
         {
             using var ctx = new PhotoContext();
@@ -73,6 +79,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(formModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, PhotoFormModel form)
@@ -104,6 +111,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             using var ctx = new PhotoContext();

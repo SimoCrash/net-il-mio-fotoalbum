@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Models;
+using System.Data;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
     public class CategoryController : Controller
     {
+        [Authorize(Roles = "ADMIN, USER")]
         public IActionResult Index()
         {
             using var ctx = new PhotoContext();
@@ -14,11 +17,13 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(categories);
         }
 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category category)
@@ -31,6 +36,7 @@ namespace net_il_mio_fotoalbum.Controllers
 
         }
 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             using var ctx = new PhotoContext();
