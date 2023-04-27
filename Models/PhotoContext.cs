@@ -97,11 +97,13 @@ namespace net_il_mio_fotoalbum.Models
                     {
                         UserId = admin.Id,
                         RoleId = adminRole.Id,
+                        //password = zarate
                     },
                     new()
                     {
                         UserId = user.Id,
                         RoleId = userRole.Id,
+                        //password = zarate
                     }
                 };
                 UserRoles.AddRange(UserRoleSeed);
