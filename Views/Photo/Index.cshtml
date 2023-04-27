@@ -23,22 +23,45 @@
             @if (photo.Visible is true)
             {
                 
-            <tr>
-                <td>@photo.Id</td>
-                <td><img src="@photo.ImageUrl" /></td>
-                <td>@photo.Title</td>
-                <td>@photo.Description</td>
-                <td>@photo.Visible</td>
-                <td>
-                    @string.Join(", ", photo.Categories.Select(c => c.Name).ToArray()).
+                <tr>
+                    <td>@photo.Id</td>
+                    <td><img src="@photo.ImageUrl" /></td>
+                    <td>@photo.Title</td>
+                    <td>@photo.Description</td>
+                    <td>@photo.Visible</td>
+                    <td>
+                        @string.Join(", ", photo.Categories.Select(c => c.Name).ToArray()).
                     
-                </td>
-                <td>
-                    <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
-                    <button class="bg-warning"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
-                    <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
-                </td>
-            </tr>
+                    </td>
+                    <td>
+                        <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                            <button class="bg-warning"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
+                            <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
+                        }
+                    </td>
+                </tr>
+            }
+            else if (User.IsInRole("ADMIN"))
+            {
+
+                <tr>
+                    <td>@photo.Id</td>
+                    <td><img src="@photo.ImageUrl" /></td>
+                    <td>@photo.Title</td>
+                    <td>@photo.Description</td>
+                    <td>@photo.Visible</td>
+                    <td>
+                        @string.Join(", ", photo.Categories.Select(c => c.Name).ToArray()).
+
+                    </td>
+                    <td>
+                        <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>
+                        <button class="bg-warning"><a href="@Url.Action("Update", "Photo", new{id = photo.Id})">Edit</a></button>
+                        <button class="bg-danger"><a href="@Url.Action("Delete", "Photo", new{id = photo.Id})">Delete</a></button>
+                    </td>
+                </tr>
             }
             else
             {
@@ -65,4 +88,7 @@
         }
     </tbody>
 </table>
-<a href="@Url.Action("Create", "Photo")">Crea una nuova foto</a>
+@if (User.IsInRole("ADMIN"))
+{
+    <a href="@Url.Action("Create", "Photo")">Crea una nuova foto</a>
+}

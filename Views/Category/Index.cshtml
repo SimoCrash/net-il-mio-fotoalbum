@@ -11,7 +11,10 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Photo Associate</th>
-            <th scope="col">Actions</th>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <th scope="col">Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -24,11 +27,17 @@
                 <td>
                     @string.Join(", ", (category.Photos.Select(p => p.Title)).ToArray()).
                 </td>
-                <td>
-                <button class="bg-danger"><a href="@Url.Action("Delete", "Category", new{id = category.Id})">Delete</a></button>
-                </td>
+                @if (User.IsInRole("ADMIN"))
+                {
+                   <td>
+                        <button class="bg-danger"><a href="@Url.Action("Delete", "Category", new{id = category.Id})">Delete</a></button>
+                   </td> 
+                }
             </tr>
         }
     </tbody>
 </table>
-<a href="@Url.Action("Create", "Category")">Crea una nuova Categoria</a>
+@if (User.IsInRole("ADMIN"))
+{
+    <a href="@Url.Action("Create", "Category")">Crea una nuova Categoria</a>
+}
