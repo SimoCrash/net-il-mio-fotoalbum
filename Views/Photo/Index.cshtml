@@ -30,10 +30,8 @@
                 <td>@photo.Description</td>
                 <td>@photo.Visible</td>
                 <td>
-                    @foreach (var category in photo.Categories!)
-                    {
-                        <text>@category.Name</text>
-                    }
+                    @string.Join(", ", photo.Categories.Select(c => c.Name).ToArray()).
+                    
                 </td>
                 <td>
                     <button class="bg-primary"><a href="@Url.Action("Detail", "Photo", new{id = photo.Id})">Detail</a></button>

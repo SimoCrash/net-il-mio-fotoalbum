@@ -36,7 +36,7 @@ namespace net_il_mio_fotoalbum.Controllers
             using var ctx = new PhotoContext();
             var CategoryToDelete = ctx.Categories.FirstOrDefault(c => c.Id == id);
 
-            if (CategoryToDelete != null)
+            if (CategoryToDelete == null)
             {
                 return View($"Non è stato trovato l'id {id}");
             }

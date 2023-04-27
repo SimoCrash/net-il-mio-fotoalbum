@@ -97,7 +97,6 @@ namespace net_il_mio_fotoalbum.Controllers
             PhotoToUpdate.Description = form.Photo.Description;
             PhotoToUpdate.ImageUrl = form.Photo.ImageUrl;
             PhotoToUpdate.Visible = form.Photo.Visible;
-            PhotoToUpdate.CategoriesId = form.Photo.CategoriesId;
             PhotoToUpdate.Categories = form.SelectedCategories.Select(sc => ctx.Categories.First(c => c.Id == Convert.ToInt32(sc))).ToList();
 
             ctx.SaveChanges();

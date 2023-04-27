@@ -8,7 +8,5 @@
         public string ImageUrl { get; set; } = string.Empty;
         public bool Visible { get; set; } = true;
         public List<Category>? Categories { get; set; }
-        public int? CategoriesId { get; set; }
-
     }
 }
