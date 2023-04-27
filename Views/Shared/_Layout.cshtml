@@ -23,10 +23,10 @@
                             <a href="@Url.Action("Index", "Photo")" class="m-3">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Privacy", "Photo")" class="m-3">Privacy</a>
+                            <a href="@Url.Action("Index", "Category")" class="m-3">Categorie</a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index", "Category")" class="m-3">Categorie</a>
+                            <a href="@Url.Action("Privacy", "Photo")" class="m-3">Privacy</a>
                         </li>
                         @await Html.PartialAsync("_LoginPartial")
                     </ul>
@@ -42,7 +42,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - net_il_mio_fotoalbum - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - net_il_mio_fotoalbum - <a asp-area="Privacy" asp-controller="Photo" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
