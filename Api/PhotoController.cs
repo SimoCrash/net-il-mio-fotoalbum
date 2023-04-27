@@ -28,7 +28,7 @@ namespace net_il_mio_fotoalbum.Api
             {
                 return NotFound();
             }
-
+             
             return Ok(photo);
         }
     }
